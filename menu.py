@@ -165,7 +165,7 @@ def cantidadJugadores(): # Muestra el menú de elección del número de jugadore
     # mostrar_cargando(40)
     # limpiar_consola()
     print("""
-    + ----------- ¿Cuántas personas se unirán a la mesa? ----------- +
-    +  1 jugador      2 jugadores      3 jugadores     4 jugadores   +
-    + -------------------------------------------------------------- +
-    """)
+        + ---- ¿Cuántas personas se unirán a la mesa? ---- +
+        +    2 jugadores     3 jugadores     4 jugadores   +
+        + ------------------------------------------------ +
+        """)

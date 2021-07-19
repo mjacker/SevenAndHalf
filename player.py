@@ -2,6 +2,7 @@ from banca import bancaGiveCard
 from cards import cards
 import menu as mn
 import resourses as rsc
+from msvcrt import getch
 
 class player:
     def __init__(self, playerName):
@@ -31,7 +32,6 @@ class player:
             return False
 
     def isPassedCard(self, card) -> bool:
-        print("\n TRAYENDO VALOR DE CARTA: ", cards.getScore(self, card))
         if self.player_score + cards.getScore(self, card) > 7.5:
             return True
         else:
@@ -100,16 +100,14 @@ class player:
                 mn.getActualScore(self.getScore())
                 print("¿Te plantas? si/no - s/n")
                 yesornot = rsc.recibir_eleccion_str()
-                print("TEMP, se refibe el valor de: ", yesornot)
                 if yesornot == "y" or yesornot == "si" or yesornot == "s" :
                     print("Te has platando con una puntación de ", self.getScore())
                     # break
                     self.setNotActive()
                 elif yesornot == "n" or yesornot == "no":
                     continue                
-
-            print("\n EL VALOR ACTUAL EN PUNTOS ES: ", self.getScore())
-            input("press any key to continue.. final del turno")
+            print("press any key to continue.. final del turno")
+            getch()
         self.setNotActive()
 
         """Banca Logic"""
@@ -127,107 +125,19 @@ class player:
                 input("\t\tse ha pasado.")
                 self.setPassed()
                 self.setNotActive()
+                self.setScore(0.0)
                 # break
             else:
                 self.addScore(card)
                 mn.getActualScore(self.getScore())
                 print("¿Te plantas? si/no - s/n")
                 yesornot = rsc.recibir_eleccion_str()
-                print("TEMP, se refibe el valor de: ", yesornot)
                 if yesornot == "y" or yesornot == "si" or yesornot == "s" :
                     print("Te has platando con una puntación de ", self.getScore())
                     # break
                     self.setNotActive()
                 elif yesornot == "n" or yesornot == "no":
                     continue                
-
-            print("\n EL VALOR ACTUAL EN PUNTOS ES: ", self.getScore())
-            input("press any key to continue.. final del turno")
+            print("press any key to continue.. final del turno")
+            getch()
         self.setNotActive()
-
-
-
-    # def bancaTurnOld(self, deck, list_scores):
-    #     while True:
-    #         mn.playing(self.player_name)
-    #         # la banca toma una carta del deck.
-    #         card =  str(self.getCard(deck))
-    #         mn.getCardBanca(card)
-
-    #         # en base de la carta recibida, se calcula los puntos.
-    #         self.setScore(card)
-    #         mn.getActualBancaScore(self.getScore())
-
-    #         # plantarse o no plantarse
-    #         print("¿La Banca se planta? ")
-    #         print(" La banca está pensando", end=" ", flush = True)
-    #         rsc.sleep(1)
-    #         # print(".", end=" ", flush = True)
-    #         # rsc.sleep(1)
-    #         # print(".", end=" ", flush = True)
-    #         # rsc.sleep(1)
-    #         # print(".", end=" ", flush = True)
-
-    #         max = list_scores[0].player_score
-    #         for scores in list_scores[:-2]:
-    #             if max < scores.player_score():
-    #                 max = scores.player_score()
-
-    #         # puntos = []
-    #         # max = list_scores[0].player_score
-    #         # for scores in list_scores[:-2]:
-    #             # print("TEST: ", scores.player_score)
-
-    #         print("\n\n###TEMPORAL: EL MAYOR de entre los jugadores es: ", max)
-
-    #         if max < self.getScore() and self.getScore() <= 7.5:
-    #             print("La Banca se planta!!")
-    #             break              
-    #         elif self.getScore() >= 6:
-    #             print("La Banca se planta!!")
-    #             break
-    #         elif self.getScore() > 7.5:
-    #             print("la banca pierde, y se pone los puntos a cero.............")
-    #             self.resetScore()
-    #         else:
-    #             rsc.sleep(1)
-    #             continue
-
-    # def bancaTurn(self, deck, player_score):
-    #     while True:
-    #         mn.playing(self.player_name)
-    #         # rsc.sleep(3)
-
-    #         # la banca toma una carta del deck.
-    #         card =  str(self.getCard(deck))
-    #         mn.getCardBanca(card)
-
-    #         # en base de la carta recibida, se calcula los puntos.
-    #         self.setScore(card)
-    #         mn.getActualBancaScore(self.getScore())
-
-    #         if self.isPassed():
-    #             self.setPassed()
-    #             self.setNotActive()
-    #             break
-    #         else:
-    #             # plantarse o no plantarse
-    #             print("¿La Banca se plantas? ")
-    #             print(" La banca está pensando", end=" ", flush = True)
-    #             rsc.sleep(1)
-    #             print(".", end=" ", flush = True)
-    #             rsc.sleep(1)
-    #             print(".", end=" ", flush = True)
-    #             rsc.sleep(1)
-    #             print(".", end=" ", flush = True)
-
-    #             if self.getScore() > player_score and self.getScore() <= 7.5:
-    #                 print("La Banca se planta!!")
-    #                 break              
-    #             elif self.getScore() >= 7:
-    #                 print("La Banca se planta!!")
-    #                 break
-    #             else:
-    #                 rsc.sleep(1)
-    #                 continue
-
